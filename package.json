@@ -1,0 +1,30 @@
+{
+  "name": "autowallpaper",
+  "version": "1.0.0",
+  "description": "Auto set wallpaper ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/banyudu/autowallpaper.git"
+  },
+  "keywords": [
+    "auto",
+    "wallpaper"
+  ],
+  "author": "Yudu Ban <banyudu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/banyudu/autowallpaper/issues"
+  },
+  "homepage": "https://github.com/banyudu/autowallpaper#readme",
+  "dependencies": {
+    "wallpaper": "^2.3.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
