@@ -1,3 +1,5 @@
+'use strict' 
+
 const wallpaper = require('wallpaper')
 
 class AutoWallpaper {
@@ -10,11 +12,8 @@ class AutoWallpaper {
   }
 
   run () {
-    console.log('this.interval is: ', this.interval)
-    console.log('this.papers is: ', this.papers)
     setInterval(() => {
       let index = Math.random() * (this.papers.length)
-      console.log('index is: ', index, ', image is: ', this.papers[index])
       wallpaper.set(this.papers[index])
     }, this.interval)
   }

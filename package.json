@@ -1,11 +1,14 @@
 {
   "name": "autowallpaper",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Auto set wallpaper ",
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "preversion": "npm test",
+    // "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
@@ -15,6 +18,12 @@
     "auto",
     "wallpaper"
   ],
+  "pre-commit": [
+    "lint"
+  ],
+  "bin": {
+    "autowallpaper": "./bin/autowallpaper"
+  },
   "author": "Yudu Ban <banyudu@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -22,6 +31,7 @@
   },
   "homepage": "https://github.com/banyudu/autowallpaper#readme",
   "dependencies": {
+    "commander": "^2.9.0",
     "wallpaper": "^2.3.0"
   },
   "devDependencies": {

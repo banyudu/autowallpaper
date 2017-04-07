@@ -1,3 +1,5 @@
+'use strict'
+
 const AutoWallpaper = require('..')
 describe('Wallpaper', () => {
   describe('class', () => {
