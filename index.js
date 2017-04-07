@@ -1,22 +1,28 @@
-'use strict' 
+'use strict'
 
 const wallpaper = require('wallpaper')
 
 class AutoWallpaper {
-  constructor (papers, interval) {
+  run (papers, interval) {
     if (!Array.isArray(papers)) {
-      papers = [papers]
+      papers = [ papers ]
     }
-    this.papers = papers
-    this.interval = interval
-  }
-
-  run () {
+    if (papers.length === 0) {
+      return
+    }
+    let lastIndex = null
     setInterval(() => {
-      let index = Math.random() * (this.papers.length)
-      wallpaper.set(this.papers[index])
-    }, this.interval)
+      let index = 0
+      while (papers.length > 1 && index === lastIndex) {
+        index = Math.floor(Math.random() * (papers.length))
+      }
+      lastIndex = index
+      let file = papers[index]
+      console.log('index: ', index)
+      console.log('file: ', file)
+      wallpaper.set(file)
+    }, interval)
   }
 }
-
-module.exports = AutoWallpaper
+const AW = new AutoWallpaper()
+module.exports = AW

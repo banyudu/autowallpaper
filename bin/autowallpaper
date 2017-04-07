@@ -3,6 +3,8 @@
 
 const program = require('commander')
 const pkg = require('../package.json')
+const AW = require('../')
+const daemon = require('daemon')
 
 const version = pkg.version
 
@@ -10,3 +12,6 @@ program
   .version(version)
   .option('new <name>', 'scaffold a new project')
   .parse(process.argv)
+
+daemon()
+AW.run(['/tmp/a', '/tmp/b'], 5000)

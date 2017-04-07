@@ -1,22 +1,16 @@
 'use strict'
 
-const AutoWallpaper = require('..')
+const aw = require('..')
 describe('Wallpaper', () => {
-  describe('class', () => {
-    it('should has a constructor', () => {
-      let aw = new AutoWallpaper([], 5)
-      aw.run()
-    })
-  })
-
   describe('wallpapers', () => {
     it('should accept empty array', () => {
-      let aw = new AutoWallpaper([], 5)
-      aw.run()
+      aw.run([], 5)
     })
     it('should accept string', () => {
-      let aw = new AutoWallpaper('/tmp/a', 5)
-      aw.run()
+      aw.run('/tmp/a', 5)
+    })
+    it('should accept array', () => {
+      aw.run(['/tmp/a', '/tmp/b'], 5)
     })
   })
 })
