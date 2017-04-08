@@ -3,15 +3,16 @@
 
 const program = require('commander')
 const pkg = require('../package.json')
-const AW = require('../')
-const daemon = require('daemon')
-
 const version = pkg.version
 
 program
   .version(version)
-  .option('new <name>', 'scaffold a new project')
+  .usage('<directory>')
   .parse(process.argv)
 
-daemon()
-AW.run(['/tmp/a', '/tmp/b'], 5000)
+const dir = program.args[0]
+const interval = parseInt(program.args[1], 10) * 1000
+
+require('daemon')()
+
+require('../').run(dir, interval)

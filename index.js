@@ -1,26 +1,34 @@
 'use strict'
 
 const wallpaper = require('wallpaper')
+const fs = require('fs')
+const _ = require('lodash')
+const path = require('path')
 
 class AutoWallpaper {
-  run (papers, interval) {
-    if (!Array.isArray(papers)) {
-      papers = [ papers ]
-    }
-    if (papers.length === 0) {
+  run (dir, interval) {
+    if (typeof dir !== 'string' || typeof interval !== 'number') {
+      console.warn('Invalid arguments')
       return
     }
-    let lastIndex = null
+    let lastPaper = null
     setInterval(() => {
-      let index = 0
-      while (papers.length > 1 && index === lastIndex) {
-        index = Math.floor(Math.random() * (papers.length))
+      try {
+        if (!fs.existsSync(dir) || !fs.lstatSync(dir).isDirectory()) {
+          console.warn(`${dir} not exists or is not a directory`)
+          return
+        }
+        const files = fs.readdirSync(dir)
+        const papers = _.filter(files, (file) => { return /\.(png|jpe?g|gif)$/i.test(file) })
+        let index = 0
+        while (papers.length > 1 && papers[index] === lastPaper) {
+          index = Math.floor(Math.random() * (papers.length))
+        }
+        lastPaper = papers[index]
+        wallpaper.set(path.join(dir, papers[index]))
+      } catch (error) {
+        console.error(error)
       }
-      lastIndex = index
-      let file = papers[index]
-      console.log('index: ', index)
-      console.log('file: ', file)
-      wallpaper.set(file)
     }, interval)
   }
 }
