@@ -1,6 +1,6 @@
 {
   "name": "autowallpaper",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Auto set wallpaper ",
   "main": "index.js",
   "scripts": {
