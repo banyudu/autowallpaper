@@ -7,11 +7,15 @@ const version = pkg.version
 
 program
   .version(version)
-  .usage('<directory>')
+  .usage('<directory> [interval=300]')
   .parse(process.argv)
 
+if (program.args.length < 1) {
+  program.outputHelp()
+}
+
 const dir = program.args[0]
-const interval = parseInt(program.args[1], 10) * 1000
+const interval = (parseInt(program.args[1], 10) || 300) * 1000
 
 require('daemon')()
 
