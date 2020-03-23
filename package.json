@@ -35,7 +35,7 @@
     "fs": "^0.0.1-security",
     "lodash": "^4.17.4",
     "path": "^0.12.7",
-    "wallpaper": "^2.3.0"
+    "wallpaper": "^4.4.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
